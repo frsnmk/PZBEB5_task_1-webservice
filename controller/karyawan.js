@@ -13,7 +13,6 @@ function fetchOne(req, res) {
 
 function create(req, res) {
   const data = dbKaryawan.fetchAll();
-  console.log(data);
   const existingData = data.find(
     (d) => d.name == req.body.name && d.day == req.body.day
   );
