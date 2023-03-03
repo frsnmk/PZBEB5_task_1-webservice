@@ -7,6 +7,8 @@ const karyawanController = require("../controller/karyawan");
 const app = express();
 const router = express.Router();
 
+const cache = apicache.middleware;
+
 apicache.options({
   debug: true,
   defaultDuration: "1 hour",
