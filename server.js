@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const fs = require("fs");
+const path = require("path");
 
 const apiv1 = require("./middleware/apiv1");
 const errorHandler = require("./middleware/errorHandler");
@@ -11,7 +13,9 @@ const cookieSessionController = require("./controller/cookie-session");
 const app = express();
 const port = 3000;
 
-let isAuthenticated = false;
+const authDbPath = path.resolve(__dirname, "database/auth/auth.json");
+const authData = fs.readFileSync(authDbPath);
+let isAuthenticated = JSON.parse(authData);
 
 app.use(express.json());
 
@@ -33,11 +37,11 @@ app.use(
 );
 
 app.use("/login", (req, res) => {
-  isAuthenticated = true;
+  fs.writeFileSync(authDbPath, JSON.stringify(true));
   res.send({message: "Kamu berhasil login"});
 });
 app.use("/logout", (req, res) => {
-  isAuthenticated = false;
+  fs.writeFileSync(authDbPath, JSON.stringify(false));
   res.send({message: "Kamu berhasil logout"});
 });
 

@@ -20,24 +20,24 @@ app.use(function (req, res, next) {
   next();
 });
 
-router.get("/atk", cache(), atkController.fetchAll);
+router.get("/atk", atkController.fetchAll);
 
-router.post("/atk", cache(), atkController.create);
+router.post("/atk", atkController.create);
 
-router.get("/atk/:id", cache(), atkController.fetchOne);
+router.get("/atk/:id", atkController.fetchOne);
 
-router.put("/atk/:id", cache(), atkController.update);
+router.put("/atk/:id", atkController.update);
 
-router.delete("/atk/:id", cache(), atkController.destroy);
+router.delete("/atk/:id", atkController.destroy);
 
-router.get("/karyawan", cache(), karyawanController.fetchAll);
+router.get("/karyawan", karyawanController.fetchAll);
 
-router.post("/karyawan", cache(), karyawanController.create);
+router.post("/karyawan", karyawanController.create);
 
-router.get("/karyawan/:id", cache(), karyawanController.fetchOne);
+router.get("/karyawan/:id", karyawanController.fetchOne);
 
-router.put("/karyawan/:id", cache(), karyawanController.update);
+router.put("/karyawan/:id", karyawanController.update);
 
-router.delete("/karyawan/:id", cache(), karyawanController.destroy);
+router.delete("/karyawan/:id", karyawanController.destroy);
 
 module.exports = router;
